@@ -36,7 +36,7 @@ info:
 
     To demonstrate REST API capabilities we are using the sample database that comes with SQLite. SQLite is a software library that provides a relational database management system and is popular for developing small-scale applications.
 
-    ![SQLite Tutorial Database Entity-Relationship (ER) Diagram](SQLite_Tutorial_DB.jpg)
+    ![SQLite Tutorial Database Entity-Relationship (ER) Diagram](https://twiapi.herokuapp.com/images/SQLite_Tutorial_DB.jpg)
 
     ## Getting Started
 

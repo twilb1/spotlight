@@ -5,279 +5,170 @@ tags:
 info:
   title: TWi REST API Reference
   version: '1.0'
-  description: >
-    Technically Write IT (TWi) Ltd. provides an example service to demonstrate a
-    real-world REST API in action. Clients can send HTTP requests to service
-    endpoints and receive responses. This document describes the Application
-    Programming Interface (API) that enables client-side application developers
-    to communicate with the service.
+  description: |
+    This version was created using spotlight.io with the source YAML spec kept in GitHub (twilb1/spotlight). It looks like there is bidirectional syncing, that is, you can make changes in spotlight.io and they are reflected in Github or you can make changes to a Github file and the canges are reflected in spotlight.io. 
 
+    Technically Write IT (TWi) Ltd. provides an example service to demonstrate a real-world REST API in action. Clients can send HTTP requests to service endpoints and receive responses. This document describes the Application Programming Interface (API) that enables client-side application developers to communicate with the service.
 
-    Using the API, developers can perform Create, Read, Update, and Delete
-    (CRUD) operations on database objects using the following REST API requests:
-
+    Using the API, developers can perform Create, Read, Update, and Delete (CRUD) operations on database objects using the following REST API requests:
 
     -   GET requests - to read information from the database tables
 
-
     -   POST requests - to create records in database tables
-
 
     -   PUT requests - to update records in database tables
 
-
     -   DELETE requests - to delete records from the database tables
 
-
-    This document describes the details of the requests that can be issued,
-    including:
-
+    This document describes the details of the requests that can be issued, including:
 
     -   The type of the request
 
-
     -   Required and optional parameters
-
 
     -   Limitation of parameters, such as the length of a parameter string
 
-
-    -   Status codes that indicate if the request was successful or resulted in
-    an error
-
+    -   Status codes that indicate if the request was successful or resulted in an error
 
     -   Error messages
 
-
     ## Application Database
 
+    To demonstrate REST API capabilities we are using the sample database that comes with SQLite. SQLite is a software library that provides a relational database management system and is popular for developing small-scale applications.
 
-    To demonstrate REST API capabilities we are using the sample database that
-    comes with SQLite. SQLite is a software library that provides a relational
-    database management system and is popular for developing small-scale
-    applications.
-
-
-    ![SQLite Tutorial Database Entity-Relationship (ER)
-    Diagram](SQLite_Tutorial_DB.jpg)
-
+    ![SQLite Tutorial Database Entity-Relationship (ER) Diagram](SQLite_Tutorial_DB.jpg)
 
     ## Getting Started
 
-
-    Getting started could not be simpler! To get information about all the
-    customers registerd in the database enter the following command in your
-    favorite browser: 
+    Getting started could not be simpler! To get information about all the customers registerd in the database enter the following command in your favorite browser: 
 
         https://twiapi.herokuapp.com/api/customers
 
-    You get a response in JavaScript Object Notation (JSON) format showing the
-    details of each customer in the database.
+    You get a response in JavaScript Object Notation (JSON) format showing the details of each customer in the database.
 
-
-    Similarly, to get information about all the employees in the database, enter
-    the following command in your favorite browser:
+    Similarly, to get information about all the employees in the database, enter the following command in your favorite browser:
 
         https://twiapi.herokuapp.com/api/employees
 
-    You get a response in JSON format showing the details of each employee in
-    the database.
+    You get a response in JSON format showing the details of each employee in the database.
 
-
-    In a browser URL, it is only possible to issue GET requests. To issue more
-    complicated REST requests, you can use a tool called `Postman`.
-
+    In a browser URL, it is only possible to issue GET requests. To issue more complicated REST requests, you can use a tool called `Postman`.
 
     ## Using Postman
 
+    Postman is an online platform that allows API developers to collaborate on the development of REST API applications. The part we are most interested in is the [Postman API Client](https://www.postman.com/product/api-client).
 
-    Postman is an online platform that allows API developers to collaborate on
-    the development of REST API applications. The part we are most interested in
-    is the [Postman API Client](https://www.postman.com/product/api-client).
+    We can use this client to send all types of requests to our REST API (or any REST API) and view the responses, status codes, and error messages. It is the ideal tool for REST API testing.
 
+    The Postman API Client is freely available from the [download](https://www.postman.com/downloads/) page.
 
-    We can use this client to send all types of requests to our REST API (or any
-    REST API) and view the responses, status codes, and error messages. It is
-    the ideal tool for REST API testing.
-
-
-    The Postman API Client is freely available from the
-    [download](https://www.postman.com/downloads/) page.
-
-
-    The Postman API Client user interface is quite intuitive, but to help you
-    get started, check out Postman's own
-    [documentation](https://learning.postman.com/docs/postman/launching-postman/introduction/).
-
+    The Postman API Client user interface is quite intuitive, but to help you get started, check out Postman's own [documentation](https://learning.postman.com/docs/postman/launching-postman/introduction/).
 
     ## Managing Information in the Database
 
-
     You can use the TWi REST API for:
-
 
     -   [Customer Management](#section/Customer-Management)
 
-
     -   [Employee Management](#section/Employee-Management)
-
 
     ## Customer Management
 
-
-    You can view and edit the information retained in the database for
-    customers. This information includes:
-
+    You can view and edit the information retained in the database for customers. This information includes:
 
     -   Customer ID
 
-
     -   First Name (required)
 
-
     -   Last Name (required)
-
 
     -   Company
 
-
     -   Address
-
 
     -   City
 
-
     -   State
-
 
     -   Country
 
-
     -   Postal Code
-
 
     -   Phone
 
-
     -   Fax
 
-
     -   Email (required)
-
 
     -   Support Representative ID
 
+    The Customer ID is generated automatically by the database, and it cannot be changed. Attempting to do so results in an error.
 
-    The Customer ID is generated automatically by the database, and it cannot be
-    changed. Attempting to do so results in an error.
+    The First Name, Last Name, and Email are required fields, so you must specify them when adding a new customer. If you do not specify these fields when adding a customer, you receive an error.
 
-
-    The First Name, Last Name, and Email are required fields, so you must
-    specify them when adding a new customer. If you do not specify these fields
-    when adding a customer, you receive an error.
-
-
-    The Support Representative ID is the ID of an employee that is assigned to
-    the customer.
-
+    The Support Representative ID is the ID of an employee that is assigned to the customer.
 
     Using the TWi REST API, you can:
-
 
     -   [View details of all customers](#operation/get-customers)
 
-
     -   [View details of a single customer](#operation/get-single-customer)
-
 
     -   [Add a new customer](#operation/post-customer)
 
-
     -   [Edit customer details](#operation/put-customer-info)
-
 
     -   [Delete a customer](#operation/del-customer)
 
-
     ## Employee Management
 
-
-    You can view and edit the information retained in the database for
-    employees. This information includes:
-
+    You can view and edit the information retained in the database for employees. This information includes:
 
     -   Employee ID
 
-
     -   Last Name (required)
-
 
     -   First Name (required)
 
-
     -   Title
-
 
     -   Reports To
 
-
     -   Birth Date
-
 
     -   Hire Date
 
-
     -   Address
-
 
     -   City
 
-
     -   State
-
 
     -   Country
 
-
     -   Postal Code
-
 
     -   Phone
 
-
     -   Fax
-
 
     -   Email (required)
 
+    The Employee ID is generated automatically by the database, and it cannot be changed. Attempting to do so results in an error.
 
-    The Employee ID is generated automatically by the database, and it cannot be
-    changed. Attempting to do so results in an error.
+    The First Name, Last Name, and Email are required fields, so you must specify them when adding a new employee. If you do not specify these fields when adding an employee, you receive an error.
 
-
-    The First Name, Last Name, and Email are required fields, so you must
-    specify them when adding a new employee. If you do not specify these fields
-    when adding an employee, you receive an error.
-
-
-    The Reports To parameter is the ID of an employee that the employee reports
-    to.
-
+    The Reports To parameter is the ID of an employee that the employee reports to.
 
     Using the TWi REST API, you can:
 
-
     -   [View details of all empoloyees](#operation/get-api-employee)
-
 
     -   [View details of a single employee](#operation/get-api-employees-Id)
 
-
     -   [Add a new employee](#operation/post-api-employees)
 
-
     -   [Edit empoloyee details](#operation/put-api-employees-EmployeeId)
-
 
     -   [Delete an employee](#operation/del-api-employees-EmployeeId)
   contact:
@@ -386,9 +277,7 @@ paths:
         '404':
           description: Customers not found
       operationId: get-customers
-      description: >-
-        You can get a list of all customers with details by sending an HTTP GET
-        request to the `/api/customers` endpoint.
+      description: You can get a list of all customers with details by sending an HTTP GET request to the `/api/customers` endpoint.
       tags:
         - Customers Endpoint
     post:
@@ -446,10 +335,7 @@ paths:
               type: object
               properties: {}
         description: Post the necessary fields for the API to create a new customer.
-      description: >-
-        You can create a new customer by sending a POST request to the
-        `/api/customers` end point and including the required parameter values
-        in the body of the request.
+      description: You can create a new customer by sending a POST request to the `/api/customers` end point and including the required parameter values in the body of the request.
       tags:
         - Customers Endpoint
   '/api/customers/{CustomerId}':
@@ -466,9 +352,7 @@ paths:
             type: string
           in: query
           name: CustomerId
-          description: >-
-            The ID of the specific customer for which you want to retrieve
-            details.
+          description: The ID of the specific customer for which you want to retrieve details.
       summary: View Details of a Specific Customer
       responses:
         '200':
@@ -488,10 +372,7 @@ paths:
         '404':
           description: User Not Found
       operationId: get-single-customer
-      description: >-
-        You can get the details of a single customer by sending an HTTP GET
-        request to the /api/customers/`CustomerId`, where `CustomerId` is the ID
-        of the specific customer for which you want to retrieve details.
+      description: 'You can get the details of a single customer by sending an HTTP GET request to the /api/customers/`CustomerId`, where `CustomerId` is the ID of the specific customer for which you want to retrieve details.'
       tags:
         - Customers Endpoint
     delete:
@@ -521,9 +402,7 @@ paths:
         '404':
           description: Customer not found
       operationId: del-customer
-      description: >-
-        You can delete a specific customer by sending an HTTP DELETE request to
-        the `/api/customers/{CustomerId}` endpoint.
+      description: 'You can delete a specific customer by sending an HTTP DELETE request to the `/api/customers/{CustomerId}` endpoint.'
       tags:
         - Customers Endpoint
     put:
@@ -587,9 +466,7 @@ paths:
                 type: object
                 properties: {}
       operationId: get-api-employees
-      description: >-
-        You can get a list of all employees with details by sending an HTTP GET
-        request to the `/api/employees` endpoint.
+      description: You can get a list of all employees with details by sending an HTTP GET request to the `/api/employees` endpoint.
       tags:
         - Employees Endpoint
     post:
@@ -604,14 +481,10 @@ paths:
                 type: object
                 properties: {}
         '406':
-          description: >-
-            `FirstName` length must be at least 2 characters long and not
-            greater than 40 characters long.<br>
-
+          description: |-
+            `FirstName` length must be at least 2 characters long and not greater than 40 characters long.<br>
             `Email` must be a valid email address. 
-      description: >-
-        You add a new employee by sending an HTTP POST request with the required
-        employee information to the `/api/employees` endpoint.
+      description: You add a new employee by sending an HTTP POST request with the required employee information to the `/api/employees` endpoint.
       requestBody:
         content:
           application/json:
@@ -672,9 +545,7 @@ paths:
                   FirstName: John
                   LastName: Flannery
                   Email: john.flannery@technicallywriteit.com
-        description: >-
-          The request body can contain any of the parameters in the schema, but
-          it must contain the required parameters as shown in the example.
+        description: 'The request body can contain any of the parameters in the schema, but it must contain the required parameters as shown in the example.'
       tags:
         - Employees Endpoint
   '/api/employees/{EmployeeId}':
@@ -780,10 +651,7 @@ paths:
         '404':
           description: The employee record was not found.
       operationId: get-api-employees-Id
-      description: >-
-        You can get details of a specific employee by sending an HTTP GET
-        request to the /api/customers/`<EmployeeId>` endpoint, where
-        `<EmployeeId>` is a placeholder for an actual employee ID.
+      description: 'You can get details of a specific employee by sending an HTTP GET request to the /api/customers/`<EmployeeId>` endpoint, where `<EmployeeId>` is a placeholder for an actual employee ID.'
       requestBody:
         content:
           application/json:
@@ -801,13 +669,8 @@ paths:
         '200':
           description: The employee record was updated successfully.
         '406':
-          description: >-
-            Country must be at least 2 characters long and less than 40
-            characters long.
-      description: >-
-        You can edit employee details by sending an HTTP PUT request with the
-        relevant employee information to the `/api/employees/<EmployeeID>`
-        endpoint, where `<EmployeeID>` is the ID of the employee to update.
+          description: Country must be at least 2 characters long and less than 40 characters long.
+      description: 'You can edit employee details by sending an HTTP PUT request with the relevant employee information to the `/api/employees/<EmployeeID>` endpoint, where `<EmployeeID>` is the ID of the employee to update.'
       requestBody:
         content:
           application/json:
@@ -861,10 +724,7 @@ paths:
                 value:
                   City: Galway
                   Country: Ireland
-        description: >-
-          The request body can contain any of the parameters in the schema but
-          only needs to include the parameters to be updated as shown in the
-          example. 
+        description: 'The request body can contain any of the parameters in the schema but only needs to include the parameters to be updated as shown in the example. '
       tags:
         - Employees Endpoint
     delete:
@@ -873,10 +733,7 @@ paths:
       responses:
         '200':
           description: The employee record is deleted.
-      description: >-
-        You delete an employee record by sending an HTTP DELETE request to the
-        `/api/employees/<EmployeeId>` endpoint, where `<EmployeeId>` is the ID
-        of the employee record to be deleted.
+      description: 'You delete an employee record by sending an HTTP DELETE request to the `/api/employees/<EmployeeId>` endpoint, where `<EmployeeId>` is the ID of the employee record to be deleted.'
       tags:
         - Employees Endpoint
 components:

@@ -1,0 +1,1026 @@
+openapi: 3.0.0
+tags:
+  - name: Customers Endpoint
+  - name: Employees Endpoint
+info:
+  title: TWi REST API Reference
+  version: '1.0'
+  description: >
+    Technically Write IT (TWi) Ltd. provides an example service to demonstrate a
+    real-world REST API in action. Clients can send HTTP requests to service
+    endpoints and receive responses. This document describes the Application
+    Programming Interface (API) that enables client-side application developers
+    to communicate with the service.
+
+
+    Using the API, developers can perform Create, Read, Update, and Delete
+    (CRUD) operations on database objects using the following REST API requests:
+
+
+    -   GET requests - to read information from the database tables
+
+
+    -   POST requests - to create records in database tables
+
+
+    -   PUT requests - to update records in database tables
+
+
+    -   DELETE requests - to delete records from the database tables
+
+
+    This document describes the details of the requests that can be issued,
+    including:
+
+
+    -   The type of the request
+
+
+    -   Required and optional parameters
+
+
+    -   Limitation of parameters, such as the length of a parameter string
+
+
+    -   Status codes that indicate if the request was successful or resulted in
+    an error
+
+
+    -   Error messages
+
+
+    ## Application Database
+
+
+    To demonstrate REST API capabilities we are using the sample database that
+    comes with SQLite. SQLite is a software library that provides a relational
+    database management system and is popular for developing small-scale
+    applications.
+
+
+    ![SQLite Tutorial Database Entity-Relationship (ER)
+    Diagram](SQLite_Tutorial_DB.jpg)
+
+
+    ## Getting Started
+
+
+    Getting started could not be simpler! To get information about all the
+    customers registerd in the database enter the following command in your
+    favorite browser: 
+
+        https://twiapi.herokuapp.com/api/customers
+
+    You get a response in JavaScript Object Notation (JSON) format showing the
+    details of each customer in the database.
+
+
+    Similarly, to get information about all the employees in the database, enter
+    the following command in your favorite browser:
+
+        https://twiapi.herokuapp.com/api/employees
+
+    You get a response in JSON format showing the details of each employee in
+    the database.
+
+
+    In a browser URL, it is only possible to issue GET requests. To issue more
+    complicated REST requests, you can use a tool called `Postman`.
+
+
+    ## Using Postman
+
+
+    Postman is an online platform that allows API developers to collaborate on
+    the development of REST API applications. The part we are most interested in
+    is the [Postman API Client](https://www.postman.com/product/api-client).
+
+
+    We can use this client to send all types of requests to our REST API (or any
+    REST API) and view the responses, status codes, and error messages. It is
+    the ideal tool for REST API testing.
+
+
+    The Postman API Client is freely available from the
+    [download](https://www.postman.com/downloads/) page.
+
+
+    The Postman API Client user interface is quite intuitive, but to help you
+    get started, check out Postman's own
+    [documentation](https://learning.postman.com/docs/postman/launching-postman/introduction/).
+
+
+    ## Managing Information in the Database
+
+
+    You can use the TWi REST API for:
+
+
+    -   [Customer Management](#section/Customer-Management)
+
+
+    -   [Employee Management](#section/Employee-Management)
+
+
+    ## Customer Management
+
+
+    You can view and edit the information retained in the database for
+    customers. This information includes:
+
+
+    -   Customer ID
+
+
+    -   First Name (required)
+
+
+    -   Last Name (required)
+
+
+    -   Company
+
+
+    -   Address
+
+
+    -   City
+
+
+    -   State
+
+
+    -   Country
+
+
+    -   Postal Code
+
+
+    -   Phone
+
+
+    -   Fax
+
+
+    -   Email (required)
+
+
+    -   Support Representative ID
+
+
+    The Customer ID is generated automatically by the database, and it cannot be
+    changed. Attempting to do so results in an error.
+
+
+    The First Name, Last Name, and Email are required fields, so you must
+    specify them when adding a new customer. If you do not specify these fields
+    when adding a customer, you receive an error.
+
+
+    The Support Representative ID is the ID of an employee that is assigned to
+    the customer.
+
+
+    Using the TWi REST API, you can:
+
+
+    -   [View details of all customers](#operation/get-customers)
+
+
+    -   [View details of a single customer](#operation/get-single-customer)
+
+
+    -   [Add a new customer](#operation/post-customer)
+
+
+    -   [Edit customer details](#operation/put-customer-info)
+
+
+    -   [Delete a customer](#operation/del-customer)
+
+
+    ## Employee Management
+
+
+    You can view and edit the information retained in the database for
+    employees. This information includes:
+
+
+    -   Employee ID
+
+
+    -   Last Name (required)
+
+
+    -   First Name (required)
+
+
+    -   Title
+
+
+    -   Reports To
+
+
+    -   Birth Date
+
+
+    -   Hire Date
+
+
+    -   Address
+
+
+    -   City
+
+
+    -   State
+
+
+    -   Country
+
+
+    -   Postal Code
+
+
+    -   Phone
+
+
+    -   Fax
+
+
+    -   Email (required)
+
+
+    The Employee ID is generated automatically by the database, and it cannot be
+    changed. Attempting to do so results in an error.
+
+
+    The First Name, Last Name, and Email are required fields, so you must
+    specify them when adding a new employee. If you do not specify these fields
+    when adding an employee, you receive an error.
+
+
+    The Reports To parameter is the ID of an employee that the employee reports
+    to.
+
+
+    Using the TWi REST API, you can:
+
+
+    -   [View details of all empoloyees](#operation/get-api-employee)
+
+
+    -   [View details of a single employee](#operation/get-api-employees-Id)
+
+
+    -   [Add a new employee](#operation/post-api-employees)
+
+
+    -   [Edit empoloyee details](#operation/put-api-employees-EmployeeId)
+
+
+    -   [Delete an employee](#operation/del-api-employees-EmployeeId)
+  contact:
+    name: Len Baker
+    email: len.baker@technicallywriteit.com
+servers:
+  - url: 'https://twiapi.herokuapp.com'
+    description: The server hosting the API.
+paths:
+  /api/customers:
+    get:
+      summary: View Details of All Customers
+      responses:
+        '200':
+          description: Customers found
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    CustomerId: 1
+                    FirstName: Luís
+                    LastName: Gonçalves
+                    Company: Embraer - Empresa Brasileira de Aeronáutica S.A.
+                    Address: 'Av. Brigadeiro Faria Lima, 2170'
+                    City: São José dos Campos
+                    State: SP
+                    Country: Brazil
+                    PostalCode: 12227-000
+                    Phone: +55 (12) 3923-5555
+                    Fax: +55 (12) 3923-5566
+                    Email: luisg@embraer.com.br
+                    SupportRepId: 3
+                properties:
+                  CustomerId:
+                    type: number
+                  FirstName:
+                    type: string
+                    minLength: 1
+                  Company:
+                    type: string
+                    minLength: 1
+                  LastName:
+                    type: string
+                    minLength: 1
+                  Address:
+                    type: string
+                    minLength: 1
+                  City:
+                    type: string
+                    minLength: 1
+                  State:
+                    type: string
+                    minLength: 1
+                  Country:
+                    type: string
+                    minLength: 1
+                  PostalCode:
+                    type: string
+                    minLength: 1
+                  Phone:
+                    type: string
+                    minLength: 1
+                  Fax:
+                    type: string
+                    minLength: 1
+                  Email:
+                    type: string
+                    minLength: 1
+                  SupportRepId:
+                    type: number
+                required:
+                  - CustomerId
+                  - FirstName
+                  - Company
+                  - LastName
+                  - Address
+                  - City
+                  - State
+                  - Country
+                  - PostalCode
+                  - Phone
+                  - Fax
+                  - Email
+                  - SupportRepId
+              examples:
+                example-1:
+                  value:
+                    CustomerId: 0
+                    FirstName: string
+                    LastName: string
+                    Company: string
+                    Address: string
+                    City: string
+                    State: string
+                    Country: string
+                    PostalCode: string
+                    Phone: string
+                    Fax: string
+                    Email: string
+                    SupportRepId: 0
+        '201':
+          description: Created
+        '404':
+          description: Customers not found
+      operationId: get-customers
+      description: >-
+        You can get a list of all customers with details by sending an HTTP GET
+        request to the `/api/customers` endpoint.
+      tags:
+        - Customers Endpoint
+    post:
+      summary: Create New Customer
+      operationId: post-customer
+      responses:
+        '200':
+          description: Customer created.
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                    minLength: 1
+                  lastName:
+                    type: string
+                    minLength: 1
+                  eMail:
+                    type: string
+                    minLength: 1
+                required:
+                  - firstName
+                  - lastName
+                  - eMail
+                x-examples:
+                  example-1:
+                    firstName: Len
+                    lastName: Baker
+                    eMail: len.baker@technicallywriteit.com
+        '409':
+          description: Email Already Taken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                email:
+                  type: string
+            examples:
+              Create User Bob Fellow:
+                value:
+                  FirstName: Bob
+                  LastName: Fellow
+                  Email: bob.fellow@gmail.com
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: Post the necessary fields for the API to create a new customer.
+      description: >-
+        You can create a new customer by sending a POST request to the
+        `/api/customers` end point and including the required parameter values
+        in the body of the request.
+      tags:
+        - Customers Endpoint
+  '/api/customers/{CustomerId}':
+    get:
+      parameters:
+        - in: path
+          required: true
+          name: CustomerId
+          schema:
+            type: integer
+            minimum: 1
+          description: The customer ID
+        - schema:
+            type: string
+          in: query
+          name: CustomerId
+          description: >-
+            The ID of the specific customer for which you want to retrieve
+            details.
+      summary: View Details of a Specific Customer
+      responses:
+        '200':
+          description: Customers Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+              examples:
+                Get User Alice Smith:
+                  value:
+                    FirstName: Alice
+                    LastName: Smith
+                    Email: alice.smith@gmail.com
+        '201':
+          description: Created
+        '404':
+          description: User Not Found
+      operationId: get-single-customer
+      description: >-
+        You can get the details of a single customer by sending an HTTP GET
+        request to the /api/customers/`CustomerId`, where `CustomerId` is the ID
+        of the specific customer for which you want to retrieve details.
+      tags:
+        - Customers Endpoint
+    delete:
+      parameters:
+        - in: path
+          required: true
+          name: CustomerId
+          schema:
+            type: integer
+            minimum: 1
+          description: The customer ID
+      summary: Delete a Specific Customer
+      responses:
+        '200':
+          description: Customer deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+              examples:
+                Delete User 15:
+                  value:
+                    FirstName: Len
+                    LastName: Baker
+                    Email: len.baker@technicallywriteit.com
+                    CustomerID: 15
+        '404':
+          description: Customer not found
+      operationId: del-customer
+      description: >-
+        You can delete a specific customer by sending an HTTP DELETE request to
+        the `/api/customers/{CustomerId}` endpoint.
+      tags:
+        - Customers Endpoint
+    put:
+      parameters:
+        - in: path
+          required: true
+          name: CustomerId
+          schema:
+            type: integer
+            minimum: 1
+          description: The customer ID
+      summary: Update Customer Information
+      operationId: put-customer-info
+      responses:
+        '200':
+          description: Customer updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+              examples:
+                Updated User Rebecca Baker:
+                  value:
+                    FirstName: Rebecca
+                    LastName: Baker
+                    Email: rebecca@gmail.com
+        '404':
+          description: User Not Found
+        '409':
+          description: Email already taken
+      description: Update the information of an existing customer.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              Update First Name:
+                value:
+                  firstName: Rebecca
+              Update Email:
+                value:
+                  email: rebecca@gmail.com
+              Update Last Name & Date of Birth:
+                value:
+                  lastName: Baker
+                  dateOfBirth: '1985-10-02'
+        description: Patch user properties to update.
+      x-internal: false
+      tags:
+        - Customers Endpoint
+  /api/employees:
+    get:
+      summary: View Details of All Employees
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-api-employees
+      description: >-
+        You can get a list of all employees with details by sending an HTTP GET
+        request to the `/api/employees` endpoint.
+      tags:
+        - Employees Endpoint
+    post:
+      summary: Add an Employee
+      operationId: post-api-employees
+      responses:
+        '200':
+          description: The employee record was added.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '406':
+          description: >-
+            `FirstName` length must be at least 2 characters long and not
+            greater than 40 characters long.<br>
+
+            `Email` must be a valid email address. 
+      description: >-
+        You add a new employee by sending an HTTP POST request with the required
+        employee information to the `/api/employees` endpoint.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                EmployeeId:
+                  type: number
+                LastName:
+                  type: string
+                  minLength: 1
+                FirstName:
+                  type: string
+                  minLength: 1
+                Title:
+                  type: string
+                  minLength: 1
+                ReportsTo:
+                  type: number
+                BirthDate:
+                  type: string
+                  minLength: 1
+                HireDate:
+                  type: string
+                  minLength: 1
+                Address:
+                  type: string
+                  minLength: 1
+                City:
+                  type: string
+                  minLength: 1
+                State:
+                  type: string
+                  minLength: 1
+                Country:
+                  type: string
+                  minLength: 1
+                PostalCode:
+                  type: string
+                  minLength: 1
+                Phone:
+                  type: string
+                  minLength: 1
+                Fax:
+                  type: string
+                  minLength: 1
+                Email:
+                  type: string
+                  minLength: 1
+              required:
+                - LastName
+                - FirstName
+                - Email
+            examples:
+              example-1:
+                value:
+                  FirstName: John
+                  LastName: Flannery
+                  Email: john.flannery@technicallywriteit.com
+        description: >-
+          The request body can contain any of the parameters in the schema, but
+          it must contain the required parameters as shown in the example.
+      tags:
+        - Employees Endpoint
+  '/api/employees/{EmployeeId}':
+    parameters:
+      - schema:
+          type: string
+        name: EmployeeId
+        in: path
+        required: true
+        description: The ID of the employee to delete.
+    get:
+      summary: Get Details for a Specific Employee
+      responses:
+        '200':
+          description: The employee was deleted.
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  type: object
+                  properties:
+                    EmployeeId:
+                      type: number
+                    LastName:
+                      type: string
+                      minLength: 1
+                    FirstName:
+                      type: string
+                      minLength: 1
+                    Title:
+                      type: string
+                      minLength: 1
+                    ReportsTo:
+                      type: number
+                    BirthDate:
+                      type: string
+                      minLength: 1
+                    HireDate:
+                      type: string
+                      minLength: 1
+                    Address:
+                      type: string
+                      minLength: 1
+                    City:
+                      type: string
+                      minLength: 1
+                    State:
+                      type: string
+                      minLength: 1
+                    Country:
+                      type: string
+                      minLength: 1
+                    PostalCode:
+                      type: string
+                      minLength: 1
+                    Phone:
+                      type: string
+                      minLength: 1
+                    Fax:
+                      type: string
+                      minLength: 1
+                    Email:
+                      type: string
+                      minLength: 1
+                  required:
+                    - EmployeeId
+                    - LastName
+                    - FirstName
+                    - Title
+                    - ReportsTo
+                    - BirthDate
+                    - HireDate
+                    - Address
+                    - City
+                    - State
+                    - Country
+                    - PostalCode
+                    - Phone
+                    - Fax
+                    - Email
+              examples:
+                example-1:
+                  value:
+                    - EmployeeId: 2
+                      LastName: Edwards
+                      FirstName: Nancy
+                      Title: Sales Manager
+                      ReportsTo: 1
+                      BirthDate: '1958-12-08 00:00:00'
+                      HireDate: '2002-05-01 00:00:00'
+                      Address: 825 8 Ave SW
+                      City: Calgary
+                      State: AB
+                      Country: Canada
+                      PostalCode: T2P 2T3
+                      Phone: +1 (403) 262-3443
+                      Fax: +1 (403) 262-3322
+                      Email: nancy@chinookcorp.com
+        '404':
+          description: The employee record was not found.
+      operationId: get-api-employees-Id
+      description: >-
+        You can get details of a specific employee by sending an HTTP GET
+        request to the /api/customers/`<EmployeeId>` endpoint, where
+        `<EmployeeId>` is a placeholder for an actual employee ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+            examples: {}
+        description: 'A request body is not required. '
+      tags:
+        - Employees Endpoint
+    put:
+      summary: Edit Employee Details
+      operationId: put-api-employees-EmployeeId
+      responses:
+        '200':
+          description: The employee record was updated successfully.
+        '406':
+          description: >-
+            Country must be at least 2 characters long and less than 40
+            characters long.
+      description: >-
+        You can edit employee details by sending an HTTP PUT request with the
+        relevant employee information to the `/api/employees/<EmployeeID>`
+        endpoint, where `<EmployeeID>` is the ID of the employee to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                LastName:
+                  type: string
+                  minLength: 1
+                FirstName:
+                  type: string
+                  minLength: 1
+                Title:
+                  type: string
+                  minLength: 1
+                ReportsTo:
+                  type: number
+                BirthDate:
+                  type: string
+                  minLength: 1
+                HireDate:
+                  type: string
+                  minLength: 1
+                Address:
+                  type: string
+                  minLength: 1
+                City:
+                  type: string
+                  minLength: 1
+                State:
+                  type: string
+                  minLength: 1
+                Country:
+                  type: string
+                  minLength: 1
+                PostalCode:
+                  type: string
+                  minLength: 1
+                Phone:
+                  type: string
+                  minLength: 1
+                Fax:
+                  type: string
+                  minLength: 1
+                Email:
+                  type: string
+                  minLength: 1
+            examples:
+              example-1:
+                value:
+                  City: Galway
+                  Country: Ireland
+        description: >-
+          The request body can contain any of the parameters in the schema but
+          only needs to include the parameters to be updated as shown in the
+          example. 
+      tags:
+        - Employees Endpoint
+    delete:
+      summary: Delete an Employee
+      operationId: delete-api-employees-EmployeeId
+      responses:
+        '200':
+          description: The employee record is deleted.
+      description: >-
+        You delete an employee record by sending an HTTP DELETE request to the
+        `/api/employees/<EmployeeId>` endpoint, where `<EmployeeId>` is the ID
+        of the employee record to be deleted.
+      tags:
+        - Employees Endpoint
+components:
+  schemas:
+    Customer:
+      title: Customer
+      type: object
+      description: A person who purchases goods or services from the business.
+      x-examples:
+        Astrid Gruber:
+          CustomerId: 7
+          FirstName: Astrid
+          LastName: Gruber
+          Company: null
+          Address: 'Rotenturmstrasse 4, 1010 Innere Stadt'
+          City: Vienne
+          State: null
+          Country: Austria
+          PostalCode: '1010'
+          Phone: +43 01 5134505
+          Fax: null
+          Email: astrid.gruber@gmail.com
+          SupportRepId: 5
+      properties:
+        CustomerId:
+          type: integer
+          description: Unique identifier for the customer.
+        FirstName:
+          type: string
+          description: The first name of the customer.
+        LastName:
+          type: string
+          description: The last name of the customer.
+        Company:
+          type: string
+          description: The company the customer works for.
+        Address:
+          type: string
+          description: The address of the customer.
+        City:
+          type: string
+          description: The city in which the customer is based.
+        State:
+          type: string
+          description: The state in which the customer is based.
+        Country:
+          type: string
+          description: The country in which the customer is based.
+        PostalCode:
+          type: string
+          description: The postal code of the customer’s location.
+        Phone:
+          type: string
+          description: The customer's phone number.
+        Fax:
+          type: string
+          description: The customer's fax number.
+        Email:
+          type: string
+          description: The customer's email address.
+          format: email
+        SupportRepId:
+          type: integer
+          description: The ID of the employee assigned as assistant to the customer.
+      required:
+        - FirstName
+        - LastName
+        - Email
+    Employee:
+      description: A person who is employed by the business.
+      type: object
+      properties:
+        EmployeeId:
+          type: number
+        LastName:
+          type: string
+          minLength: 1
+        FirstName:
+          type: string
+          minLength: 1
+        Title:
+          type: string
+          minLength: 1
+        ReportsTo: {}
+        BirthDate:
+          type: string
+          minLength: 1
+        HireDate:
+          type: string
+          minLength: 1
+        Address:
+          type: string
+          minLength: 1
+        City:
+          type: string
+          minLength: 1
+        State:
+          type: string
+          minLength: 1
+        Country:
+          type: string
+          minLength: 1
+        PostalCode:
+          type: string
+          minLength: 1
+        Phone:
+          type: string
+          minLength: 1
+        Fax:
+          type: string
+          minLength: 1
+        Email:
+          type: string
+          minLength: 1
+      required:
+        - EmployeeId
+        - LastName
+        - FirstName
+        - Title
+        - BirthDate
+        - HireDate
+        - Address
+        - City
+        - State
+        - Country
+        - PostalCode
+        - Phone
+        - Fax
+        - Email
+      x-examples:
+        example-1:
+          EmployeeId: 1
+          LastName: Adams
+          FirstName: Andrew
+          Title: General Manager
+          ReportsTo: null
+          BirthDate: '1962-02-18 00:00:00'
+          HireDate: '2002-08-14 00:00:00'
+          Address: 11120 Jasper Ave NW
+          City: Edmonton
+          State: AB
+          Country: Canada
+          PostalCode: T5K 2N1
+          Phone: +1 (780) 428-9482
+          Fax: +1 (780) 428-3457
+          Email: andrew@chinookcorp.com
+      x-internal: false

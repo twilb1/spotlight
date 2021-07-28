@@ -39,6 +39,8 @@ info:
     ![SQLite Tutorial Database Entity-Relationship (ER) Diagram](https://twiapi.herokuapp.com/images/SQLite_Tutorial_DB.jpg)
 
     ## Getting Started
+    tags:
+    - name: Getting Started
 
     Getting started could not be simpler! To get information about all the customers registerd in the database enter the following command in your favorite browser: 
 

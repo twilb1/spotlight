@@ -2,6 +2,7 @@ openapi: 3.0.0
 tags:
   - name: Customers Endpoint
   - name: Employees Endpoint
+  - name: Getting Started
 info:
   title: TWi REST API Reference
   version: '1.0'

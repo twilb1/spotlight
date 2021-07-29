@@ -7,7 +7,7 @@ info:
   title: TWi REST API Reference
   version: '1.0'
   description: |
-    Minimal description here.
+    Describes the endpoints in the API and the actions you can perform using those endpoints.
   contact:
     name: Len Baker
     email: len.baker@technicallywriteit.com

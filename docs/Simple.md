@@ -106,7 +106,7 @@ The Support Representative ID is the ID of an employee that is assigned to the c
 
 Using the TWi REST API, you can:
 
-  - [View details of all customers](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTQ-view-details-of-all-customers)
+  - [View details of all customers](/docs/twi-rest-api-reference/#b3A6MTY3OTg2NTQ-view-details-of-all-customers)
 
   - [View details of a single customer](#operation/post-customer) 
 

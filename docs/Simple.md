@@ -106,15 +106,16 @@ The Support Representative ID is the ID of an employee that is assigned to the c
 
 Using the TWi REST API, you can:
 
-  - [View details of all customers](/docs/twi-rest-api-reference/#b3A6MTY3OTg2NTQ-view-details-of-all-customers)
+  - [View details of all customers](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTQ-view-details-of-all-customers)
 
-  - [View details of a single customer](#operation/post-customer) 
+  - [View details of a single customer](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTY-view-details-of-a-specific-customer) 
 
-  - [Add a new customer](#operation/post-customer)
+  - [Add a new customer](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTU-create-new-customer)
 
-  - [Edit customer details](#operation/put-customer-info)
+  - [Edit customer details](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTg-update-customer-information)
 
-  - [Delete a customer](#operation/del-customer)
+  - [Delete a customer](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTc-delete-a-specific-customer)
+
 
 ## Employee Management
 
@@ -158,12 +159,12 @@ The Reports To parameter is the ID of an employee that the employee reports to.
 
 Using the TWi REST API, you can:
 
-  - [View details of all empoloyees](#operation/get-api-employee)
+  - [View details of all empoloyees](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTk-view-details-of-all-employees)
 
-  - [View details of a single employee](#operation/get-api-employees-Id)
+  - [View details of a single employee](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NjE-get-details-for-a-specific-employee)
 
-  - [Add a new employee](#operation/post-api-employees)
+  - [Add a new employee](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NjA-add-an-employee)
 
-  - [Edit empoloyee details](#operation/put-api-employees-EmployeeId)
+  - [Edit empoloyee details](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NjI-edit-employee-details)
 
-  - [Delete an employee](#operation/del-api-employees-EmployeeId)
+  - [Delete an employee](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NjM-delete-an-employee)

@@ -117,7 +117,7 @@ info:
 
     -   [View details of all customers](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTQ-view-details-of-all-customers)
 
-    -   [View details of a single customer](#operation/get-single-customer)
+    -   [View details of a single customer](#operation/post-customer) 
 
     -   [Add a new customer](#operation/post-customer)
 

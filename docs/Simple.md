@@ -1,4 +1,4 @@
-# Simple MD File
+# TWi REST API Overview
 
 This version was created using spotlight.io with the source YAML spec kept in GitHub (twilb1/spotlight). It looks like there is bidirectional syncing, that is, you can make changes in spotlight.io and they are reflected in Github or you can make changes to a Github file and the canges are reflected in spotlight.io. 
 
@@ -7,21 +7,15 @@ Technically Write IT (TWi) Ltd. provides an example service to demonstrate a rea
 Using the API, developers can perform Create, Read, Update, and Delete (CRUD) operations on database objects using the following REST API requests:
 
   - GET requests - to read information from the database tables
-
   - POST requests - to create records in database tables
-
   - PUT requests - to update records in database tables
-
   - DELETE requests - to delete records from the database tables
 
 This document describes the details of the requests that can be issued including:
 
   - The type of the request
-
   - Required and optional parameters
-
   - Limitation of parameters, such as the length of a parameter string
-
   - Status codes that indicate if the request was successful or resulted in an error
 
   -   Error messages
@@ -38,13 +32,13 @@ Leanne was here! Testing editing
 
 Getting started could not be simpler! To get information about all the customers registerd in the database enter the following command in your favorite browser: 
 
-  https://twiapi.herokuapp.com/api/customers
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://twiapi.herokuapp.com/api/customers
 
 You get a response in JavaScript Object Notation (JSON) format showing the details of each customer in the database.
 
 Similarly, to get information about all the employees in the database, enter the following command in your favorite browser:
 
-  https://twiapi.herokuapp.com/api/employees
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://twiapi.herokuapp.com/api/employees
 
 You get a response in JSON format showing the details of each employee in the database.
 
@@ -64,38 +58,26 @@ The Postman API Client user interface is quite intuitive, but to help you get st
 
 You can use the TWi REST API for:
 
-  - [Customer Management](#section/Customer-Management)
+  - [Customer Management](#customer-management)
 
-  - [Employee Management](#section/Employee-Management)
+  - [Employee Management](#employee-management)
 
 ## Customer Management
 
 You can view and edit the information retained in the database for customers. This information includes:
 
   - Customer ID
-
   - First Name (required)
-
   - Last Name (required)
-
   - Company
-
   - Address
-
   - City
-
   - State
-
   - Country
-
   - Postal Code
-
   - Phone
-
   - Fax
-
   - Email (required)
-
   - Support Representative ID
 
 The Customer ID is generated automatically by the database, and it cannot be changed. Attempting to do so results in an error.
@@ -122,33 +104,19 @@ Using the TWi REST API, you can:
 You can view and edit the information retained in the database for employees. This information includes:
 
   - Employee ID
-
   - Last Name (required)
-
   - First Name (required)
-
   - Title
-
   - Reports To
-
   - Birth Date
-
   - Hire Date
-
   - Address
-
   - City
-
   - State
-
   - Country
-
   - Postal Code
-
   - Phone
-
   - Fax
-
   - Email (required)
 
 The Employee ID is generated automatically by the database, and it cannot be changed. Attempting to do so results in an error.

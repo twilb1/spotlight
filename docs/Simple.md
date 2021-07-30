@@ -62,7 +62,7 @@ You can use the TWi REST API for:
 
   - [Employee Management](#employee-management)
 
-## Customer Management
+### Customer Management
 
 You can view and edit the information retained in the database for customers. This information includes:
 
@@ -99,7 +99,7 @@ Using the TWi REST API, you can:
   - [Delete a customer](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTc-delete-a-specific-customer)
 
 
-## Employee Management
+### Employee Management
 
 You can view and edit the information retained in the database for employees. This information includes:
 

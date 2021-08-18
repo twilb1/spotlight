@@ -92,11 +92,11 @@ info:
     The Support Representative ID is the ID of an employee that is assigned to the customer.
 
     Using the TWi REST API, you can:
-    -   [View details of all customers](#operation/get-customers)
-    -   [View details of a single customer](#operation/get-single-customer)
-    -   [Add a new customer](#operation/post-customer)
+    -   [View details of all customers](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTQ-view-details-of-all-customers)
+    -   [View details of a single customer](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTY-view-details-of-a-specific-customer)
+    -   [Add a new customer](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTU-create-new-customer)
     -   [Edit customer details](#operation/put-customer-info)
-    -   [Delete a customer](#operation/del-customer)
+    -   [Delete a customer](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTc-delete-a-specific-customer)
 
     ## Employee Management
 

@@ -149,11 +149,11 @@ info:
     The `Reports To` parameter is the ID of an employee that the employee reports to.
 
     Using the TWi REST API, you can:
-    -   [View details of all empoloyees](#operation/get-api-employee)
-    -   [View details of a single employee](#operation/get-api-employees-Id)
-    -   [Add a new employee](#operation/post-api-employees)
-    -   [Edit empoloyee details](#operation/put-api-employees-EmployeeId)
-    -   [Delete an employee](#operation/del-api-employees-EmployeeId)
+    -   [View details of all empoloyees](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NTk-view-details-of-all-employees)
+    -   [View details of a single employee](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NjE-get-details-for-a-specific-employee)
+    -   [Add a new employee](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NjA-add-an-employee)
+    -   [Edit empoloyee details](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NjI-edit-employee-details)
+    -   [Delete an employee](https://twi.stoplight.io/docs/twi-rest-api-reference/b3A6MTY3OTg2NjM-delete-an-employee)
   contact:
     name: Len Baker
     email: len.baker@technicallywriteit.com

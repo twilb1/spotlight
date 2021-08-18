@@ -9,7 +9,10 @@ info:
   description: |
     ## Introduction
 
+    This version was created using spotlight.io with the source YAML spec kept in GitHub (twilb1/spotlight). It looks like there is bidirectional syncing, that is, you can make changes in spotlight.io and they are reflected in Github or you can make changes to a Github file and the canges are reflected in spotlight.io.
+
     Technically Write IT (TWi) Ltd. provides an example service to demonstrate a real-world REST API in action. Clients can send HTTP requests to service endpoints and receive responses. This document describes the Application Programming Interface (API) that enables client-side application developers to communicate with the service.
+
     Using the API, developers can perform Create, Read, Update, and Delete (CRUD) operations on database objects using the following REST API requests:
     -   GET requests - to read information from the database tables
     -   POST requests - to create records in database tables

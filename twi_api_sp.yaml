@@ -170,99 +170,11 @@ paths:
       summary: View Details of All Customers
       responses:
         '200':
-          description: Customers found
+          description: OK
           content:
             application/json:
               schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
-                    CustomerId: 1
-                    FirstName: Luís
-                    LastName: Gonçalves
-                    Company: Embraer - Empresa Brasileira de Aeronáutica S.A.
-                    Address: 'Av. Brigadeiro Faria Lima, 2170'
-                    City: São José dos Campos
-                    State: SP
-                    Country: Brazil
-                    PostalCode: 12227-000
-                    Phone: +55 (12) 3923-5555
-                    Fax: +55 (12) 3923-5566
-                    Email: luisg@embraer.com.br
-                    SupportRepId: 3
-                properties:
-                  CustomerId:
-                    type: number
-                  FirstName:
-                    type: string
-                    minLength: 1
-                  Company:
-                    type: string
-                    minLength: 1
-                  LastName:
-                    type: string
-                    minLength: 1
-                  Address:
-                    type: string
-                    minLength: 1
-                  City:
-                    type: string
-                    minLength: 1
-                  State:
-                    type: string
-                    minLength: 1
-                  Country:
-                    type: string
-                    minLength: 1
-                  PostalCode:
-                    type: string
-                    minLength: 1
-                  Phone:
-                    type: string
-                    minLength: 1
-                  Fax:
-                    type: string
-                    minLength: 1
-                  Email:
-                    type: string
-                    minLength: 1
-                  SupportRepId:
-                    type: number
-                required:
-                  - CustomerId
-                  - FirstName
-                  - Company
-                  - LastName
-                  - Address
-                  - City
-                  - State
-                  - Country
-                  - PostalCode
-                  - Phone
-                  - Fax
-                  - Email
-                  - SupportRepId
-              examples:
-                example-1:
-                  value:
-                    CustomerId: 0
-                    FirstName: string
-                    LastName: string
-                    Company: string
-                    Address: string
-                    City: string
-                    State: string
-                    Country: string
-                    PostalCode: string
-                    Phone: string
-                    Fax: string
-                    Email: string
-                    SupportRepId: 0
-        '201':
-          description: Created
-        '404':
-          description: Customers not found
+                $ref: '#/components/schemas/Customer'
       operationId: get-customers
       description: You can get a list of all customers with details by sending an HTTP GET request to the `/api/customers` endpoint. Test
       tags:

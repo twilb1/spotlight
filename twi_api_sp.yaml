@@ -704,9 +704,28 @@ components:
     Employee:
       description: A person who is employed by the business.
       type: object
+      x-examples:
+        example-1:
+          EmployeeId: 1
+          LastName: Adams
+          FirstName: Andrew
+          Title: General Manager
+          ReportsTo: null
+          BirthDate: '1962-02-18 00:00:00'
+          HireDate: '2002-08-14 00:00:00'
+          Address: 11120 Jasper Ave NW
+          City: Edmonton
+          State: AB
+          Country: Canada
+          PostalCode: T5K 2N1
+          Phone: +1 (780) 428-9482
+          Fax: +1 (780) 428-3457
+          Email: andrew@chinookcorp.com
+      x-internal: false
       properties:
         EmployeeId:
           type: number
+          description: A unique identifier for the employee.
         LastName:
           type: string
           minLength: 1
@@ -762,21 +781,3 @@ components:
         - Phone
         - Fax
         - Email
-      x-examples:
-        example-1:
-          EmployeeId: 1
-          LastName: Adams
-          FirstName: Andrew
-          Title: General Manager
-          ReportsTo: null
-          BirthDate: '1962-02-18 00:00:00'
-          HireDate: '2002-08-14 00:00:00'
-          Address: 11120 Jasper Ave NW
-          City: Edmonton
-          State: AB
-          Country: Canada
-          PostalCode: T5K 2N1
-          Phone: +1 (780) 428-9482
-          Fax: +1 (780) 428-3457
-          Email: andrew@chinookcorp.com
-      x-internal: false
